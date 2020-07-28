@@ -20,7 +20,7 @@ console.log(power(4,4));
 // Part 2 - Testing
 // Add 4 more tests to show that the function is working properly
 
-console.assert(power(2,2), 4);
+console.assert(power(2,2) == 4);
 
 
 

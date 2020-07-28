@@ -6,7 +6,14 @@
 
 
 function power(x, n) {
-
+  if (n==0){
+    return 1;
+}
+  let c=x;
+  for(i=0;i< n; i++){
+    c=c*x;
+}
+  return c;
 }
 
 
@@ -20,7 +27,4 @@ console.log(power(4,4));
 // Part 2 - Testing
 // Add 4 more tests to show that the function is working properly
 
-console.assert(power(2,2) == 4);
-
-
-
+console.log(power(3,0))

@@ -6,17 +6,8 @@
 
 
 function power(x, n) {
-  if (n==0){
-    return 1;
-}
-  let c=x;
-  for(i=0;i< n; i++){
-    c=c*x;
-}
-  return c;
-}
 
-
+}
 
 console.log(power(1,1));
 console.log(power(2,2));

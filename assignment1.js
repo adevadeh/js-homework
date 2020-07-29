@@ -8,11 +8,11 @@
 function power(x, n) {
   if (n==0){
     return 1;
-}
+  }
   let c=x;
-  for(i=0;i< n; i++){
+  for(i=0; i< n; i++) {
     c=c*x;
-}
+  }
   return c;
 }
 

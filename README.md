@@ -22,6 +22,7 @@ Use git clone to copy the code to your computer. Edit and run the code on your o
     $ cd js-homework
     $ git checkout <my-github-username>
     $ git commit <commit my solutions>
+    $ git push --set-upstream origin <my-github-username>
     $ git push origin <my-github-username>
 
 ## Contributions

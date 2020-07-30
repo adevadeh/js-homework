@@ -20,9 +20,7 @@ const GRAVITATIONAL_CONSTANT = 6.674e-11;
 
 function GravitationalForce(mass_a, mass_b, distance) {
 
-  F = GRAVITATIONAL_CONSTANT * ((mass_a * mass_b) / (distance*distance));
 
-  return F;
 
 }
 
@@ -38,9 +36,6 @@ console.assert(GravitationalForce(1,1,1) == GRAVITATIONAL_CONSTANT);
 
 function Acceleration(force, mass) {
 
-  a = force / mass;
-
-  return a; 
 
 } 
 
@@ -59,42 +54,4 @@ console.assert(Acceleration(1,1) == 1);
 
 const EARTH_MASS   = 5.972e24; // KG
 const EARTH_RADIUS = 6.357e6;  // m
-
-function GravityTowardsEarth(mass, distance_from_earth_surface) {
-  Fg = GravitationalForce(EARTH_MASS, mass, EARTH_RADIUS + distance_from_earth_surface);
-  return Fg;
-}
-
-function GravityOnEarth(mass) {
-  Fg = GravityTowardsEarth(mass, 0);
-  return Fg;
-}
-
-function AccelerationOnEarth(mass) {
-  return Acceleration(GravityOnEarth(mass), mass);
-}
-
-console.log("\n\nForce pulling towards earth: " + GravityOnEarth(10));
-console.log("Acceleration towards earth: " + AccelerationOnEarth(10));
-
-
-console.log("**************************************");
-for (var i = 1; i < 100; i++) {
-  console.log("Acceleration towards earth: " + AccelerationOnEarth(i));
-}
-
-console.log("**************************************");
-let h      = 0;
-let a_at_h = 9.86;
-while (a_at_h >= 9.86) { 
-  a_at_h = Acceleration(GravityTowardsEarth(10000,h), 10000);
-  console.log("Acceleration towards earth at "+h+"m: " + a_at_h);
-  h ++;
-}
-console.log("Answer is "+h+"m");
-
-
-
-
-
 

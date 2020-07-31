@@ -2,7 +2,7 @@
 
 
 ## Assignments
-The assignments can be found in the `default` branch. They should each take 30-90min, and are meant to go along with a background in pre-algebra and brief discussion of the Newtonian model of Gravity. 
+The assignments can be found in the `default` branch. They should each take 30-90 minutes, and are meant to go along with a background in pre-algebra and brief discussion of the Newtonian model of Gravity. 
 
 You need a text editor and access to git. The code can be edited in any text editor, and can be run using NodeJS on the command line. For example:
     

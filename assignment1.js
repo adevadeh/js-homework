@@ -1,6 +1,6 @@
 console.log('\n-- Assignment 1 --');
-// Write a function power(x,n) such that power(x,n) returns x to the nth power (n is an integer).
-// Write 4 tests to show that the function is performing correctly.
+// Write a function power(x,n) such that power(x,n) returns x to the nth power (n is a *positive integer).
+// Write four tests to show that the function is performing correctly.
 
 // Part 1 - Function
 // Fill in the following function definition:
@@ -8,6 +8,8 @@ console.log('\n-- Assignment 1 --');
 function power(x, n) {
   return Math.pow(x, n);
 }
+
+// Tests
 
 console.log('\nPart 1 - Function:');
 console.log('\n1^1:');
@@ -21,7 +23,7 @@ console.log(power(4,4));
 
 
 // Part 2 - Testing
-// Add 4 more tests to show that the function is working properly
+// Add four more tests to show that the function is working properly
 
 const errorMsg = 'Math assertion failed.';
 

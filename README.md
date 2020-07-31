@@ -15,16 +15,22 @@ You can also run your JS code in a browser using a tool such as CodePen or JSBin
 * Calling functions, building on top of your functions
 * Basic loops and conditionals
 
-## Getting the code and submitting your work
+## Getting the Code and Submitting Your Work
 Use git clone to copy the code to your computer. Edit and run the code on your own computer, committing your solutions to your own branch. Then you can submit your solutions in your own branch. If you want to get new assignments, merge default into your branch.
 
     $ git clone git@github.com:adevadeh/js-homework.git
     $ cd js-homework
-    $ git checkout <my-github-username>
+    $ git checkout -b <my-github-username>
     $ git commit <commit my solutions>
-    $ git push --set-upstream origin <my-github-username>
     $ git push origin <my-github-username>
+    $ git push --set-upstream origin <my-github-username>
+        # After setting the upstream branch, you can simply use the push/pull 
+        # commands without naming a branch
+    $ git pull              # Pull in any updates
+    $ git add .             # Add your changed files to the commit
+    $ git commit -m 'add a commit message'
+    $ git push              # push your changes to the remote repo
 
 ## Contributions
-If you wish to edit the lessons, clarify questions, improve the framing, or fix typos, please submit a pull request on the `default` branch. Make sure to base your changes off of the `default` branch as well, we don't want any solutions in there.
+If you wish to edit the lessons, clarify questions, improve the framing, or fix typos, please submit a pull request on the `default` branch. Make sure that your changes are relative to the `default` branch, we don't want any solutions committed there.
 

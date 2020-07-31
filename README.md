@@ -6,7 +6,7 @@ The assignments can be found in the `default` branch. They should each take 30-9
 
 You need a text editor and access to git. The code can be edited in any text editor, and can be run using NodeJS on the command line. For example:
 
-    `$ node assignment1.js`
+    $ node assignment1.js
 
 You can also run your JS code in a browser using a tool such as CodePen or JSBin. Note that the output will appear in the console section of the browser.
 

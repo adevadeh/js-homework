@@ -1,0 +1,93 @@
+<!--
+## The Lorenz Equations
+
+As an example of a system of three simultaneous equations, consider the Lorenz system.
+This system has a number of important applications including weather forecasting. The
+system has the form:
+
+dx/dt = sigma(y − x)
+dy/dt = rho*x − y − xz
+dz/dt = xy − beta*z
+
+The values x, y, and z reference values in a 3D space. The value t is time.
+The symbol d refers to the difference of a value. For example, the difference
+of x over difference in time.
+
+As the parameters sigma, rho, and beta will vary through various ranges of values, and the
+solutions of this system of differential equations vary in form. In particular, for
+certain values of the parameters the system exhibits chaotic behavior.
+
+For rho = 126.52 and for other large values of r the behavior of this system is chaotic.
+In fact for rho > 24.7 most orbits exhibit chaotic wandering. The trajectory passes around
+two points of attraction, called strange attractors, switching from one to another in an
+apparently unpredictable fashion. This appearance of apparently random behavior is remarkable
+considering the clearly deterministic nature of the problem. However, for other values of rho the
+behavior of the trajectories is simple and stable.
+
+Write a function to return the Lorenz equation values as changing over time using the base
+values: sigma = 10, beta = 8/3, and rho = 28. -->
+
+<head>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- 3D Line Graph by Plotly: https://plotly.com/javascript/getting-started/ -->
+</head>
+
+<body>
+	<h1 id="title">Plotly JS - Lorenz</h1>
+
+	<div id="lorenz" style="width: 1200px; height: 700px;"></div>
+
+
+	<script>
+		// declare base values for sigma, beta, and rho (Can these be changed?):
+	  const sigma = 10.0;
+	  const rho = 28.0;
+	  const beta = 2.667;
+
+	  // run the step function in increments of dt
+	  var dt = 0.01;
+	  var pointCount = 10000;
+
+		// initialize variables
+		var c = [];
+		var dx, dy, dz, i;
+
+	  // initial values for x, y, and z.  (Can these be changed?):
+	  let x = [0.0];
+	  let y = [1.0];
+	  let z = [1.05];
+
+	  // Step through "time", calculating the partial derivatives at the current point
+	  // and using them to estimate the next point:
+	  for(i = 0; i < pointCount; i++) {
+		 	c.push(i * dt);
+
+			dx = sigma * (y[i] - x[i]);
+	    dy = (rho * x[i]) - y[i] - (x[i] * z[i]);
+	    dz = (x[i] * y[i]) - (beta * z[i]);
+
+			x.push(x[i] + (dx * dt));
+	    y.push(y[i] + (dy * dt));
+	    z.push(z[i] + (dz * dt));
+	  }
+
+	  Plotly.newPlot('lorenz', [{
+	    type: 'scatter3d',
+	    mode: 'lines+markers',
+	    x: x,
+	    y: y,
+	    z: z,
+	    line: {
+	      width: 2,
+	      color: c,
+	      colorscale: "Viridis"},
+	    marker: {
+	      size: 0.5,
+	      color: c,
+	      colorscale: "Greens",
+	      cmin: -10,
+	      cmax: 10
+	    }},
+	  ]);
+	</script>
+</body>

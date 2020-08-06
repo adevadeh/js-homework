@@ -40,8 +40,10 @@
           var colorNew = 0xFFAA00;
           pointMaterial.color = new THREE.Color( colorNew );
           pointMaterial.transparent = true;
+          // How does the material size affect the look and feel?
           pointMaterial.size = 0.05;
           pointMaterial.blending = THREE.AdditiveBlending;
+          // what happens if instead of points we use a line function? 'THREE.Line'
           points = new THREE.Points( geometry, pointMaterial );
 
           // Put them together
@@ -52,7 +54,7 @@
               renderer.render( scene, camera );
               requestAnimationFrame( render );
 
-              var t = 0.002;
+              var t = 0.003;
               var sigma = 10.0;
               var rho = 28.0;
               var beta = 8/3;
@@ -81,7 +83,7 @@
               const rho = 28.0;
               const beta = 8/3;
 
-              var dt = 0.002;
+              var dt = 0.003;
               var steps = 100000
               for (var i = 0; i < steps; i++){
 

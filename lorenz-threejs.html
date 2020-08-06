@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lorenz with Three.js</title>
+        <script src="https://threejs.org/build/three.js"></script>
+    </head>
+    <body>
+        <script>
+
+          // This script uses Three.js
+          // Find out more
+          // https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene
+
+          var scene = new THREE.Scene();
+          var camera = new THREE.PerspectiveCamera(  75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+          camera.position.z = 25;
+          var renderer = new THREE.WebGLRenderer( { antialias: true } );
+          renderer.setPixelRatio( window.devicePixelRatio );
+          renderer.setSize( window.innerWidth, window.innerHeight );
+          renderer.setClearColor( 0x000000, 1 ); // background color
+          document.body.appendChild( renderer.domElement );
+          var light = new THREE.PointLight( 0x9BC995, 1, 1000 ); // light source and color
+          light.position.set( 0, 0, 0 );
+          scene.add( light );
+
+          // Setting up a group to hold the items we will be creating together
+          var group = new THREE.Group();
+
+          // Array curve holds the positions of points generated from a lorenz equation;
+          // which generates the points and returns an array of points
+          var lorenzCurve = lorenz();
+
+          // Generating the geometry
+          var curve = new THREE.CatmullRomCurve3(lorenzCurve);
+          var geometry = new THREE.Geometry();
+          geometry.vertices = curve.getPoints(1000000);
+
+          // Points material: size, color, blending
+          var pointMaterial = new THREE.PointsMaterial();
+          var colorNew = 0xFFAA00;
+          pointMaterial.color = new THREE.Color(colorNew);
+          pointMaterial.transparent = true;
+          pointMaterial.size = 0.05;
+          pointMaterial.blending = THREE.AdditiveBlending;
+          point = new THREE.Points(geometry, pointMaterial);
+
+          // Put them together
+          group.add(point);
+          scene.add( group );
+
+          var render = function () {
+              renderer.render( scene, camera );
+              requestAnimationFrame( render );
+
+              var t = 0.002;
+              var sigma = 10.0;
+              var rho = 28.0;
+              var beta = 8/3;
+
+              geometry.vertices.forEach(function(v){
+                  v.x = v.x + t * ((sigma) * (v.y - v.x));
+                  v.y = v.y + t * ((rho * v.x) - v.y - (v.x * v.z));
+                  v.z = v.z + t * ((v.x * v.y) - (beta * v.z));
+              })
+              geometry.verticesNeedUpdate = true;
+              // change camera postion
+              group.rotation.x += 2*t;
+              group.rotation.y -= 0.5*t;
+              group.rotation.z += t;
+          };
+
+          render();
+
+          function lorenz(){
+
+              var lorenzCurve=[];
+
+              var x = 0, y = 1, z = 1.05;
+
+              const sigma = 10.0;
+              const rho = 28.0;
+              const beta = 8/3;
+
+              var dt = 0.002;
+              var steps = 100000
+              for (var i = 0; i < steps; i++){
+
+                  x = x + dt * (sigma * (y - x));
+                  y = y + dt * ((rho * x) - y - (x * z));
+                  z = z + dt * ((x * y) - (beta * z));
+
+                  lorenzCurve.push(new THREE.Vector3(x, y, z));
+              }
+              return lorenzCurve;
+          }
+
+
+        </script>
+    </body>
+</html>
